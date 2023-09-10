@@ -32,7 +32,7 @@ class ProjectControllerTest {
             "lfox@wayenenterprises.co.gt");
 
     //Lyles code must be implemented here
-    static Driver driver = DriverFactory.createNewDriver("Lyle", "Esau", "0623458765", "lyle@gmail.com", "delivery driver", Helper.generateID());
+    static Driver driver = DriverFactory.createNewDriver("Lyle", "Esau", "0623458765", "lyle@gmail.com", "delivery driver");
     static Project project = ProjectFactory.createProject(Helper.generateID(),"Project 1","Almost done"
             ,projectManager,siteManager,driver);
 
