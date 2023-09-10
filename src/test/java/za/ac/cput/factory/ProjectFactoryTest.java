@@ -29,7 +29,7 @@ class ProjectFactoryTest {
                 "Engineer","Lucius","Morgan","Fox","N/A",
                 "lfox@wayenenterprises.co.gt");
 
-        Driver driver = DriverFactory.createNewDriver("Lyle", "Esau", "0623458765", "lyle@gmail.com", "delivery driver", Helper.generateID());
+        Driver driver = DriverFactory.createNewDriver("Lyle", "Esau", "0623458765", "lyle@gmail.com", "delivery driver");
 
 
 

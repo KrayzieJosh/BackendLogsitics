@@ -28,7 +28,7 @@ class ProjectServiceImplTest {
             "j;@gmail.com");
 
     //Lyles code must be here
-    static Driver driver = DriverFactory.createNewDriver("Lyle", "Esau", "0623458765", "lyle@gmail.com", "delivery driver", Helper.generateID());
+    static Driver driver = DriverFactory.createNewDriver("Lyle", "Esau", "0623458765", "lyle@gmail.com", "delivery driver");
     private static Project project = ProjectFactory.createProject(Helper.generateID(),"Project 1","In progress",manager,siteManager,driver);
     @Test
     void a_create() {
