@@ -5,10 +5,10 @@ package za.ac.cput.domain;
  Date: 11 June 2023
 */
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Entity
 public class Driver implements Serializable {
@@ -20,7 +20,8 @@ public class Driver implements Serializable {
     private String contact;
     private String email;
     private String driverPosition;
-    private String vehicleId;
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    private List<DeliveryVehicle> vehicles;
 
     public Driver() {
     }
@@ -34,7 +35,8 @@ public class Driver implements Serializable {
         this.contact = builder.contact;
         this.email = builder.email;
         this.driverPosition = builder.driverPosition;
-        this.vehicleId = builder.vehicleId;
+        this.vehicles = builder.vehicles;
+
     }
 
     public String getDriverId() {
@@ -61,8 +63,32 @@ public class Driver implements Serializable {
         return driverPosition;
     }
 
-    public String getVehicleId() {
-        return vehicleId;
+    public List<DeliveryVehicle> getVehicles() {
+        return vehicles;
+    }
+
+    @Override
+    public String toString() {
+        return "Driver{" +
+                "driverId='" + driverId + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", contact='" + contact + '\'' +
+                ", email='" + email + '\'' +
+                ", driverPosition='" + driverPosition + '\'' +
+                ", vehicles=" + vehicles +
+                '}';
+    }
+
+    public String secondString() {
+        return "Driver{" +
+                "driverId='" + driverId + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", contact='" + contact + '\'' +
+                ", email='" + email + '\'' +
+                ", driverPosition='" + driverPosition + '\'' +
+                '}';
     }
 
     public static class Builder{
@@ -74,7 +100,7 @@ public class Driver implements Serializable {
         private String contact;
         private String email;
         private String driverPosition;
-        private String vehicleId;
+        private List<DeliveryVehicle> vehicles;
 
         //setters:
         public Builder setDriverId(String driverId) {
@@ -107,8 +133,8 @@ public class Driver implements Serializable {
             return this;
         }
 
-        public Builder setVehicleId(String vehicleId) {
-            this.vehicleId = vehicleId;
+        public Builder setVehicles(List<DeliveryVehicle> vehicles) {
+            this.vehicles = vehicles;
             return this;
         }
 
@@ -121,7 +147,7 @@ public class Driver implements Serializable {
             this.contact = driver.contact;
             this.email = driver.email;
             this.driverPosition = driver.driverPosition;
-            this.vehicleId = driver.vehicleId;
+            this.vehicles = driver.vehicles;
             return this;
         }
 
