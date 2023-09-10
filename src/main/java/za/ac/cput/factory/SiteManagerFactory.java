@@ -15,7 +15,7 @@ public class SiteManagerFactory {
             String lastName,
             String contact,
             String email
-    ) {  if(Helper.isNullOrEmpty(siteManagerId)||Helper.isNullOrEmpty(userPosition)
+    ) /*{  if(Helper.isNullOrEmpty(siteManagerId)||Helper.isNullOrEmpty(userPosition)
             ||Helper.isNullOrEmpty(firstName)
             ||Helper.isNullOrEmpty(middleName)
             ||Helper.isNullOrEmpty(lastName)
@@ -24,7 +24,7 @@ public class SiteManagerFactory {
     {
 
         return null;
-    }{
+    }*/{
         return new SiteManager.SiteManagerBuilder()
                 .setSiteManagerId(siteManagerId)
                 .setPosition(userPosition)
@@ -38,4 +38,4 @@ public class SiteManagerFactory {
 
 
 
-}}
+}
