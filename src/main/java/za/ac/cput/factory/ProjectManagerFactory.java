@@ -16,7 +16,7 @@ public class ProjectManagerFactory {
             String lastName,
             String contact,
             String email
-    ) {  if(Helper.isNullOrEmpty(projectManagerId)||Helper.isNullOrEmpty(position)
+    ) {  /*if(Helper.isNullOrEmpty(projectManagerId)||Helper.isNullOrEmpty(position)
             ||Helper.isNullOrEmpty(firstName)
             ||Helper.isNullOrEmpty(middleName)
             ||Helper.isNullOrEmpty(lastName)
@@ -25,7 +25,7 @@ public class ProjectManagerFactory {
     {
 
         return null;
-    }
+    }*/
         return new ProjectManager.ProjectManagerBuilder()
                 .setProjectManagerId(projectManagerId)
                 .setPosition(position)
@@ -46,7 +46,7 @@ public class ProjectManagerFactory {
             String email,
             List<Project> projects
     ) {
-        {
+        /*{
             if (Helper.isNullOrEmpty(projectManagerId) || Helper.isNullOrEmpty(position)
                     || Helper.isNullOrEmpty(firstName)
                     || Helper.isNullOrEmpty(middleName)
@@ -56,7 +56,7 @@ public class ProjectManagerFactory {
                     || Helper.isNullOrEmpty(String.valueOf(projects))) {
 
                 return null;
-            }
+            }*/
             {
                 return new ProjectManager.ProjectManagerBuilder()
                         .setProjectManagerId(projectManagerId)
@@ -71,7 +71,7 @@ public class ProjectManagerFactory {
 
         }
     }
-}
+
 
 
 
