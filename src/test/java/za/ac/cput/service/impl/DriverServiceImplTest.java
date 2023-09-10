@@ -6,9 +6,15 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import za.ac.cput.domain.DeliveryVehicle;
 import za.ac.cput.domain.Driver;
+import za.ac.cput.factory.DeliveryVehicleFactory;
 import za.ac.cput.factory.DriverFactory;
 import za.ac.cput.util.Helper;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -19,9 +25,9 @@ class DriverServiceImplTest {
     @Autowired
     private DriverServiceImpl service;
 
+    static List<DeliveryVehicle> vehicles = Collections.singletonList(DeliveryVehicleFactory.createDeliveryVehicle(Helper.generateID(), "Kia Sport", "10/12/25", 55, true));
     static Driver driver =
-            DriverFactory.createNewDriver("Lyle", "Esau", "0623458765", "lyle@gmail.com", "delivery driver", Helper.generateID());
-
+            DriverFactory.createNewDriver("Lyle", "Esau", "0623458765", "lyle@gmail.com", "delivery driver");
 
     @Test
     void a_create() {
