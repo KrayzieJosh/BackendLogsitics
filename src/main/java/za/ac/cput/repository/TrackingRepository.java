@@ -7,5 +7,4 @@ import za.ac.cput.domain.Tracking;
 import java.util.Set;
 
 public interface TrackingRepository extends JpaRepository<Tracking,String> {
-    public Set<Tracking> getAll();
 }
