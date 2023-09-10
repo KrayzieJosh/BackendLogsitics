@@ -1,43 +1,43 @@
 package za.ac.cput.service.serviceImpl;
 
-/* GPSServiceImpl.java
+/* LocationServiceImpl.java
  Entities for the serviceImpl
  Author: Joshua Jacobs (221144862)
  Date: 9 June 2023
 */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import za.ac.cput.domain.GPS;
-import za.ac.cput.repository.GPSRepository;
-import za.ac.cput.service.GPSService;
+import za.ac.cput.domain.Tracking;
+import za.ac.cput.repository.TrackingRepository;
+import za.ac.cput.service.TrackingService;
 
 import java.util.Set;
 
 
 @Service
-public class GPSServiceImpl implements GPSService {
+public class TrackingServiceImpl implements TrackingService {
 
-    private GPSRepository repository;
+    private TrackingRepository repository;
     @Autowired
-    private GPSServiceImpl(GPSRepository repository) {
+    private TrackingServiceImpl(TrackingRepository repository) {
         this.repository = repository;
     }
 
 
     @Override
-    public GPS create(GPS gps) {
-        return this.repository.save(gps);
+    public Tracking create(Tracking tracking) {
+        return this.repository.save(tracking);
     }
 
     @Override
-    public GPS read(String tripId) {
+    public Tracking read(String tripId) {
         return this.repository.findById(tripId).orElse(null);
     }
 
     @Override
-    public GPS update(GPS gps) {
-        if (this.repository.existsById(gps.getTripId()))
-            return this.repository.save(gps);
+    public Tracking update(Tracking tracking) {
+        if (this.repository.existsById(tracking.getTripId()))
+            return this.repository.save(tracking);
         return null;
     }
 
@@ -51,7 +51,7 @@ public class GPSServiceImpl implements GPSService {
     }
 
     @Override
-    public Set<GPS> getAll() {
-        return (Set<GPS>) this.repository.findAll();
+    public Set<Tracking> getAll() {
+        return (Set<Tracking>) this.repository.findAll();
     }
 }
