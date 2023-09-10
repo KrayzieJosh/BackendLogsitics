@@ -2,7 +2,7 @@ package za.ac.cput.domain;
 /*
 Student Number:221110933
 Name & Surname : Jameelah Gallo
-Date: updated the 10th September 2023
+Date: updated the  10th September 2023
  */
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;

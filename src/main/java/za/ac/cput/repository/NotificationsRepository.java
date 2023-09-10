@@ -2,7 +2,7 @@ package za.ac.cput.repository;
 /*
 Student Number:221110933
 Name & Surname : Jameelah Gallo
-Date: updated the 10th September 2023
+Date: updated the  10th September 2023
  */
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
