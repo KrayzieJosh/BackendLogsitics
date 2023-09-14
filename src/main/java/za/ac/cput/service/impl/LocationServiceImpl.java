@@ -1,4 +1,4 @@
-package za.ac.cput.service.serviceImpl;
+package za.ac.cput.service.impl;
 
 /* LocationServiceImpl.java
  Entities for the serviceImpl
@@ -8,9 +8,12 @@ package za.ac.cput.service.serviceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import za.ac.cput.domain.Location;
+import za.ac.cput.domain.Tracking;
 import za.ac.cput.repository.LocationRepository;
 import za.ac.cput.service.LocationService;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -52,6 +55,7 @@ public class LocationServiceImpl implements LocationService {
 
     @Override
     public Set<Location> getAll() {
-        return (Set<Location>) this.repository.findAll();
+        List<Location> trackingList = this.repository.findAll();
+        return new HashSet<>(trackingList);
     }
 }

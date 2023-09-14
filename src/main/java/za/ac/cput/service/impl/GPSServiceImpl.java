@@ -11,6 +11,8 @@ import za.ac.cput.domain.GPS;
 import za.ac.cput.repository.GPSRepository;
 import za.ac.cput.service.GPSService;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -52,6 +54,7 @@ public class GPSServiceImpl implements GPSService {
 
     @Override
     public Set<GPS> getAll() {
-        return (Set<GPS>) this.repository.findAll();
+        List<GPS> gpsList = (List<GPS>) this.repository.findAll();
+        return new HashSet<>(gpsList);
     }
 }
