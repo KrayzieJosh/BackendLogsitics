@@ -5,15 +5,13 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import za.ac.cput.domain.Driver;
-import za.ac.cput.domain.Project;
-import za.ac.cput.domain.ProjectManager;
-import za.ac.cput.domain.SiteManager;
-import za.ac.cput.factory.DriverFactory;
-import za.ac.cput.factory.ProjectFactory;
-import za.ac.cput.factory.ProjectManagerFactory;
-import za.ac.cput.factory.SiteManagerFactory;
+import za.ac.cput.domain.*;
+import za.ac.cput.factory.*;
 import za.ac.cput.util.Helper;
+
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 @TestMethodOrder(MethodOrderer.MethodName.class)
@@ -27,9 +25,20 @@ class ProjectServiceImplTest {
             "Operations Manager","Daniel","Lyle","Jacobs","N/A",
             "j;@gmail.com");
 
+    private static List<MaterialQuote> materialQuotes = Arrays.asList(MaterialQuoteFactory.createMaterialQuote(
+            Helper.generateID(),"Wood",11,"12",12)
+
+    );
+    static DeliveryOrder deliveryOrder = DeliveryOrderFactory.createDeliveryOrder(
+            "1",
+            "123 Main Street",
+            "2023-09-15",
+            materialQuotes
+    );
+
     //Lyles code must be here
     static Driver driver = DriverFactory.createNewDriver("Lyle", "Esau", "0623458765", "lyle@gmail.com", "delivery driver");
-    private static Project project = ProjectFactory.createProject(Helper.generateID(),"Project 1","In progress",manager,siteManager,driver);
+    private static Project project = ProjectFactory.createProject(Helper.generateID(),"Project 1","In progress",manager,siteManager,driver,deliveryOrder);
     @Test
     void a_create() {
         Project created= service.create(project);

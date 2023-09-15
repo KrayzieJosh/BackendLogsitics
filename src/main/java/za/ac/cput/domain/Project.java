@@ -19,6 +19,11 @@ public class Project {
     @JoinColumn(name="site_manager_id")
     private SiteManager siteManager;
 
+    @ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
+    @JoinColumn(name="delivery_order_id")
+    private DeliveryOrder deliveryOrder;
+
+
     public Project() {
     }
 
@@ -35,6 +40,7 @@ public class Project {
         this.projectManager=projectBuilder.projectManager;
         this.siteManager=projectBuilder.siteManager;
         this.driver=projectBuilder.driver;
+        this.deliveryOrder=projectBuilder.deliveryOrder;
 
     }
 
@@ -61,6 +67,8 @@ public class Project {
         return driver;
     }
 
+    public DeliveryOrder getDeliveryOrder(){return deliveryOrder;}
+
 
     @Override
     public String toString() {
@@ -71,6 +79,7 @@ public class Project {
                 ", driver=" + driver +
                 ", projectManager=" + projectManager +
                 ", siteManager=" + siteManager +
+                ",DeliveryOrder="+deliveryOrder+
                 '}';
     }
 
@@ -89,6 +98,8 @@ public class Project {
         private ProjectManager projectManager;
         private SiteManager siteManager;
         private Driver driver;
+
+        private DeliveryOrder deliveryOrder;
 
         public ProjectBuilder setProjectId(String projectId) {
             this.projectId = projectId;
@@ -119,6 +130,11 @@ public class Project {
             this.driver = driver;
             return this;
         }
+
+        public ProjectBuilder setDeliveryOrder(DeliveryOrder deliveryOrder){
+            this.deliveryOrder=deliveryOrder;
+            return this;
+        }
         public Project.ProjectBuilder copy(Project project){
             this.projectId=project.projectId;
             this.projectName=project.projectName;
@@ -126,6 +142,7 @@ public class Project {
             this.projectManager=project.projectManager;
             this.siteManager=project.siteManager;
             this.driver=project.driver;
+            this.deliveryOrder=project.deliveryOrder;
 
 
             return this;
