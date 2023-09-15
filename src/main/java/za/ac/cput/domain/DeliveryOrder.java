@@ -17,7 +17,7 @@ public class DeliveryOrder {
     @Column(name = "deliveryDate")
     private String deliveryDate;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<MaterialQuote> materialQuotes;
 
     public DeliveryOrder() {
@@ -65,6 +65,16 @@ public class DeliveryOrder {
         private String deliveryDate;
         private List<MaterialQuote> materialQuotes;
 
+
+        @Override
+        public String toString() {
+            return "DeliveryOrderBuilder{" +
+                    "deliveryOrderId='" + deliveryOrderId + '\'' +
+                    ", deliveryAddress='" + deliveryAddress + '\'' +
+                    ", deliveryDate='" + deliveryDate + '\'' +
+                    ", materialQuotes=" + materialQuotes +
+                    '}';
+        }
         public DeliveryOrderBuilder setDeliveryOrderId(String deliveryOrderId) {
             this.deliveryOrderId = deliveryOrderId;
             return this;
@@ -85,8 +95,7 @@ public class DeliveryOrder {
             return this;
         }
 
-        @Override
-        public String toString() {
+        public String secondString() {
             return "DeliveryOrderBuilder{" +
                     "deliveryOrderId='" + deliveryOrderId + '\'' +
                     ", deliveryAddress='" + deliveryAddress + '\'' +

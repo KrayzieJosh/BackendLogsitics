@@ -6,10 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import za.ac.cput.domain.Driver;
-import za.ac.cput.domain.Project;
-import za.ac.cput.domain.ProjectManager;
-import za.ac.cput.domain.SiteManager;
+import za.ac.cput.domain.*;
 import za.ac.cput.util.Helper;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -31,9 +28,18 @@ class ProjectFactoryTest {
 
         Driver driver = DriverFactory.createNewDriver("Lyle", "Esau", "0623458765", "lyle@gmail.com", "delivery driver");
 
+        List<MaterialQuote> materialQuotes = Arrays.asList(MaterialQuoteFactory.createMaterialQuote(
+                Helper.generateID(),"Wood",11,"12",12)
 
+        );
+         DeliveryOrder deliveryOrder = DeliveryOrderFactory.createDeliveryOrder(
+                "1",
+                "123 Main Street",
+                "2023-09-15",
+                materialQuotes
+        );
 
-        Project project = ProjectFactory.createProject(Helper.generateID(),"Project1","In progress", projectManager, siteManager,driver);
+        Project project = ProjectFactory.createProject(Helper.generateID(),"Project1","In progress", projectManager, siteManager,driver,deliveryOrder);
         assertNotNull(project);
         System.out.println(project.secondString());
     }
