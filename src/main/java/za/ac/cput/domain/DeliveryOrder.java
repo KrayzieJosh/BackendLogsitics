@@ -56,7 +56,24 @@ public class DeliveryOrder {
         return materialQuotes;
     }
 
+    @Override
+    public String toString() {
+        return "DeliveryOrderBuilder{" +
+                "deliveryOrderId='" + deliveryOrderId + '\'' +
+                ", deliveryAddress='" + deliveryAddress + '\'' +
+                ", deliveryDate='" + deliveryDate + '\'' +
+                ", materialQuotes=" + materialQuotes +
+                '}';
+    }
 
+    public String secondString() {
+        return "DeliveryOrderBuilder{" +
+                "deliveryOrderId='" + deliveryOrderId + '\'' +
+                ", deliveryAddress='" + deliveryAddress + '\'' +
+                ", deliveryDate='" + deliveryDate + '\'' +
+                ", materialQuotes=" + materialQuotes +
+                '}';
+    }
 
     public static class DeliveryOrderBuilder {
 
@@ -66,15 +83,7 @@ public class DeliveryOrder {
         private List<MaterialQuote> materialQuotes;
 
 
-        @Override
-        public String toString() {
-            return "DeliveryOrderBuilder{" +
-                    "deliveryOrderId='" + deliveryOrderId + '\'' +
-                    ", deliveryAddress='" + deliveryAddress + '\'' +
-                    ", deliveryDate='" + deliveryDate + '\'' +
-                    ", materialQuotes=" + materialQuotes +
-                    '}';
-        }
+
         public DeliveryOrderBuilder setDeliveryOrderId(String deliveryOrderId) {
             this.deliveryOrderId = deliveryOrderId;
             return this;
@@ -95,14 +104,6 @@ public class DeliveryOrder {
             return this;
         }
 
-        public String secondString() {
-            return "DeliveryOrderBuilder{" +
-                    "deliveryOrderId='" + deliveryOrderId + '\'' +
-                    ", deliveryAddress='" + deliveryAddress + '\'' +
-                    ", deliveryDate='" + deliveryDate + '\'' +
-                    ", materialQuotes=" + materialQuotes +
-                    '}';
-        }
 
         public DeliveryOrderBuilder copy(DeliveryOrder deliveryOrder) {
             this.deliveryOrderId = deliveryOrder.deliveryOrderId;
