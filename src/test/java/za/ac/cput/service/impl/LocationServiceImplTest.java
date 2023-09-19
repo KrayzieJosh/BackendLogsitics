@@ -37,9 +37,12 @@ class LocationServiceImplTest {
 
     @Test
     void c_update() {
-        Location updated = new Location.Builder().copy(location).setLocationId("789-789-456")
+        // Assume you have an existing Location object, 'location'
+        Location updated = new Location.Builder(location)
+                .setLocationId("789-789-456")
                 .build();
-        //assertNotNull(service.update(updated));
+
+        assertNotNull(updated);
         System.out.println("Updated: " + updated);
     }
 

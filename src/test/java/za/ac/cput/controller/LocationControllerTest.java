@@ -57,15 +57,30 @@ class LocationControllerTest {
 
     @Test
     void c_update() {
-        Location updated = new Location.Builder()
-                .copy(location)
-                .setAreaCode(7580)
+        // Create a Location with updated values
+        Location updated = new Location.Builder(location)
+                .setTownOrCity("Cape Town")
                 .build();
+
+        // Assuming you have a RestTemplate bean defined in your test class
+        // and a URL for updating a Location
         String url = baseURL + "/update";
-        System.out.println("URL" + url);
-        System.out.println("Post data:" + updated);
-        ResponseEntity<Location> response = restTemplate.postForEntity(url,updated,Location.class);
-        //assertNotNull(response.getBody());
+        System.out.println("URL: " + url);
+        System.out.println("Updated Location: " + updated);
+
+        // Use HTTP PUT or PATCH method to update the Location
+        ResponseEntity<Location> response = restTemplate.exchange(
+                url,
+                HttpMethod.PUT, // Use HttpMethod.PATCH if it's a partial update
+                new HttpEntity<>(updated),
+                Location.class
+        );
+
+        assertNotNull(response.getBody());
+        assertEquals(HttpStatus.OK, response.getStatusCode());
+        Location updatedLocation = response.getBody();
+        System.out.println("Updated Location Response: " + updatedLocation);
+        // You can add more assertions or validation for the updatedLocation here
     }
 
     @Test
