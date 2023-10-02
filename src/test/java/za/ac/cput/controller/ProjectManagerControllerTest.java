@@ -36,7 +36,7 @@ class ProjectManagerControllerTest {
         assertNotNull(createdProjectManager);
         assertEquals(createdProjectManager.getProjectManagerId(), createdProjectManager.getProjectManagerId());
 
-        System.out.println("Saved data: " + createdProjectManager);
+        System.out.println("Saved data: " + createdProjectManager.secondString());
     }
 
     @Test
@@ -44,7 +44,7 @@ class ProjectManagerControllerTest {
         String url=baseURL + "/read/"+ manager.getProjectManagerId();
         System.out.println("URL:" +url);
         ResponseEntity<ProjectManager> response = restTemplate.getForEntity(url, ProjectManager.class);
-        System.out.println(response.getBody());
+        System.out.println(response.getBody().secondString());
     }
 
     @Test

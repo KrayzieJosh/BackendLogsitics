@@ -5,14 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import za.ac.cput.domain.Driver;
-import za.ac.cput.domain.Project;
-import za.ac.cput.domain.ProjectManager;
-import za.ac.cput.domain.SiteManager;
-import za.ac.cput.factory.DriverFactory;
-import za.ac.cput.factory.ProjectFactory;
-import za.ac.cput.factory.ProjectManagerFactory;
-import za.ac.cput.factory.SiteManagerFactory;
+import za.ac.cput.domain.*;
+import za.ac.cput.factory.*;
 import za.ac.cput.util.Helper;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
@@ -26,10 +20,12 @@ class ProjectServiceImplTest {
     static SiteManager siteManager = SiteManagerFactory.createSiteManagerWithAttributes("245",
             "Operations Manager","Daniel","Lyle","Jacobs","N/A",
             "j;@gmail.com");
+    static Company company = CompanyFactory.createCompanyWithoutProject(Helper.generateID(),"Wayne Enterprises",
+            " 224 Park Drive Gotham City","bw@wenterprises.com");
 
-    //Lyles code must be here
+
     static Driver driver = DriverFactory.createNewDriver("Lyle", "Esau", "0623458765", "lyle@gmail.com", "delivery driver");
-    private static Project project = ProjectFactory.createProject(Helper.generateID(),"Project 1","In progress",manager,siteManager,driver);
+    private static Project project = ProjectFactory.createProject(Helper.generateID(),"Project 1","In progress",manager,siteManager,driver,company);
     @Test
     void a_create() {
         Project created= service.create(project);

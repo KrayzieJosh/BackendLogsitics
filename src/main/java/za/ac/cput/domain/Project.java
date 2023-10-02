@@ -18,6 +18,9 @@ public class Project {
     @ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
     @JoinColumn(name="site_manager_id")
     private SiteManager siteManager;
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name= "company_Id")
+    private Company company;
 
     public Project() {
     }
@@ -35,6 +38,7 @@ public class Project {
         this.projectManager=projectBuilder.projectManager;
         this.siteManager=projectBuilder.siteManager;
         this.driver=projectBuilder.driver;
+        this.company=projectBuilder.company;
 
     }
 
@@ -61,6 +65,9 @@ public class Project {
         return driver;
     }
 
+    public Company getCompany() {
+        return company;
+    }
 
     @Override
     public String toString() {
@@ -71,6 +78,7 @@ public class Project {
                 ", driver=" + driver +
                 ", projectManager=" + projectManager +
                 ", siteManager=" + siteManager +
+                ", company=" + company +
                 '}';
     }
 
@@ -89,6 +97,7 @@ public class Project {
         private ProjectManager projectManager;
         private SiteManager siteManager;
         private Driver driver;
+        private Company company;
 
         public ProjectBuilder setProjectId(String projectId) {
             this.projectId = projectId;
@@ -119,6 +128,12 @@ public class Project {
             this.driver = driver;
             return this;
         }
+
+        public ProjectBuilder setCompany(Company company) {
+            this.company = company;
+            return this;
+        }
+
         public Project.ProjectBuilder copy(Project project){
             this.projectId=project.projectId;
             this.projectName=project.projectName;
@@ -126,7 +141,7 @@ public class Project {
             this.projectManager=project.projectManager;
             this.siteManager=project.siteManager;
             this.driver=project.driver;
-
+            this.company = project.company;
 
             return this;
         }

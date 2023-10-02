@@ -1,12 +1,6 @@
 package za.ac.cput.controller;
-import za.ac.cput.domain.Project;
-import za.ac.cput.domain.ProjectManager;
-import za.ac.cput.domain.SiteManager;
-import za.ac.cput.factory.DriverFactory;
-import za.ac.cput.factory.ProjectFactory;
-import za.ac.cput.factory.ProjectManagerFactory;
-import za.ac.cput.factory.SiteManagerFactory;
-import za.ac.cput.domain.Driver;
+import za.ac.cput.domain.*;
+import za.ac.cput.factory.*;
 import za.ac.cput.util.Helper;
 import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.MethodOrderer;
@@ -30,11 +24,13 @@ class ProjectControllerTest {
     static SiteManager siteManager = SiteManagerFactory.createSiteManagerWithAttributes("345",
             "Engineer","Lucius","Morgan","Fox","N/A",
             "lfox@wayenenterprises.co.gt");
+    static Company company = CompanyFactory.createCompanyWithoutProject(Helper.generateID(),"Wayne Enterprises",
+            " 224 Park Drive Gotham City","bw@wenterprises.com");
 
     //Lyles code must be implemented here
     static Driver driver = DriverFactory.createNewDriver("Lyle", "Esau", "0623458765", "lyle@gmail.com", "delivery driver");
     static Project project = ProjectFactory.createProject(Helper.generateID(),"Project 1","Almost done"
-            ,projectManager,siteManager,driver);
+            ,projectManager,siteManager,driver,company);
 
     @Autowired
     private TestRestTemplate restTemplate;
