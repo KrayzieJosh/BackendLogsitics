@@ -8,6 +8,10 @@ import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.*;
 import za.ac.cput.factory.*;
 import za.ac.cput.util.Helper;
+
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 @TestMethodOrder(MethodOrderer.MethodName.class)
@@ -25,7 +29,21 @@ class ProjectServiceImplTest {
 
 
     static Driver driver = DriverFactory.createNewDriver("Lyle", "Esau", "0623458765", "lyle@gmail.com", "delivery driver");
-    private static Project project = ProjectFactory.createProject(Helper.generateID(),"Project 1","In progress",manager,siteManager,driver,company);
+  
+    private static List<MaterialQuote> materialQuotes = Arrays.asList(MaterialQuoteFactory.createMaterialQuote(
+            Helper.generateID(),"Wood",11,"12",12)
+
+    );
+    static DeliveryOrder deliveryOrder = DeliveryOrderFactory.createDeliveryOrder(
+            "1",
+            "123 Main Street",
+            "2023-09-15",
+            materialQuotes
+    );  
+  private static Project project = ProjectFactory.createProject(Helper.generateID(),"Project 1","In progress",manager,siteManager,driver,company,deliveryOrder);
+
+
+  
     @Test
     void a_create() {
         Project created= service.create(project);

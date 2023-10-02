@@ -14,6 +14,9 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 @TestMethodOrder(MethodOrderer.MethodName.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -27,10 +30,21 @@ class ProjectControllerTest {
     static Company company = CompanyFactory.createCompanyWithoutProject(Helper.generateID(),"Wayne Enterprises",
             " 224 Park Drive Gotham City","bw@wenterprises.com");
 
-    //Lyles code must be implemented here
+    private static List<MaterialQuote> materialQuotes = Arrays.asList(MaterialQuoteFactory.createMaterialQuote(
+            Helper.generateID(),"Wood",11,"12",12)
+
+    );
+    static DeliveryOrder deliveryOrder = DeliveryOrderFactory.createDeliveryOrder(
+            "1",
+            "123 Main Street",
+            "2023-09-15",
+            materialQuotes
+    );
+
     static Driver driver = DriverFactory.createNewDriver("Lyle", "Esau", "0623458765", "lyle@gmail.com", "delivery driver");
     static Project project = ProjectFactory.createProject(Helper.generateID(),"Project 1","Almost done"
-            ,projectManager,siteManager,driver,company);
+            ,projectManager,siteManager,driver,company,deliveryOrder);
+
 
     @Autowired
     private TestRestTemplate restTemplate;

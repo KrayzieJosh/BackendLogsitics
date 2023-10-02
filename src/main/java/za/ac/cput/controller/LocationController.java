@@ -26,7 +26,7 @@ public class LocationController {
     public Location read(@PathVariable String locationId){
         return locationService.read(String.valueOf(locationId));
     }
-    @PostMapping("/update")
+    @PatchMapping("/update")
     public Location update(@RequestBody Location location){
         return locationService.update(location);
     }

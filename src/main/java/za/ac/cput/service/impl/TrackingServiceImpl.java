@@ -1,4 +1,4 @@
-package za.ac.cput.service.serviceImpl;
+package za.ac.cput.service.impl;
 
 /* LocationServiceImpl.java
  Entities for the serviceImpl
@@ -11,6 +11,8 @@ import za.ac.cput.domain.Tracking;
 import za.ac.cput.repository.TrackingRepository;
 import za.ac.cput.service.TrackingService;
 
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 
@@ -49,9 +51,9 @@ public class TrackingServiceImpl implements TrackingService {
         }
         return false;
     }
-
     @Override
     public Set<Tracking> getAll() {
-        return (Set<Tracking>) this.repository.findAll();
+        List<Tracking> trackingList = this.repository.findAll();
+        return new HashSet<>(trackingList);
     }
 }

@@ -17,7 +17,7 @@ public class DeliveryOrder {
     @Column(name = "deliveryDate")
     private String deliveryDate;
 
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+    @OneToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     private List<MaterialQuote> materialQuotes;
 
     public DeliveryOrder() {
@@ -56,7 +56,24 @@ public class DeliveryOrder {
         return materialQuotes;
     }
 
+    @Override
+    public String toString() {
+        return "DeliveryOrderBuilder{" +
+                "deliveryOrderId='" + deliveryOrderId + '\'' +
+                ", deliveryAddress='" + deliveryAddress + '\'' +
+                ", deliveryDate='" + deliveryDate + '\'' +
+                ", materialQuotes=" + materialQuotes +
+                '}';
+    }
 
+    public String secondString() {
+        return "DeliveryOrderBuilder{" +
+                "deliveryOrderId='" + deliveryOrderId + '\'' +
+                ", deliveryAddress='" + deliveryAddress + '\'' +
+                ", deliveryDate='" + deliveryDate + '\'' +
+                ", materialQuotes=" + materialQuotes +
+                '}';
+    }
 
     public static class DeliveryOrderBuilder {
 
@@ -64,6 +81,8 @@ public class DeliveryOrder {
         private String deliveryAddress;
         private String deliveryDate;
         private List<MaterialQuote> materialQuotes;
+
+
 
         public DeliveryOrderBuilder setDeliveryOrderId(String deliveryOrderId) {
             this.deliveryOrderId = deliveryOrderId;
@@ -85,15 +104,6 @@ public class DeliveryOrder {
             return this;
         }
 
-        @Override
-        public String toString() {
-            return "DeliveryOrderBuilder{" +
-                    "deliveryOrderId='" + deliveryOrderId + '\'' +
-                    ", deliveryAddress='" + deliveryAddress + '\'' +
-                    ", deliveryDate='" + deliveryDate + '\'' +
-                    ", materialQuotes=" + materialQuotes +
-                    '}';
-        }
 
         public DeliveryOrderBuilder copy(DeliveryOrder deliveryOrder) {
             this.deliveryOrderId = deliveryOrder.deliveryOrderId;

@@ -77,7 +77,7 @@ public class Location implements Serializable {
     public Location() {
     }
 
-    public static class Builder{
+    public static class Builder {
         private String locationId;
         private String name;
         private int streetNumber;
@@ -85,12 +85,22 @@ public class Location implements Serializable {
         private String townOrCity;
         private int areaCode;
 
+        public Builder(Location location) {
+            this.locationId = location.getLocationId();
+            this.name = location.getName();
+            this.streetNumber = location.getStreetNumber();
+            this.streetName = location.getStreetName();
+            this.townOrCity = location.getTownOrCity();
+            this.areaCode = location.getAreaCode();
+        }
+
         public Builder setLocationId(String locationId) {
             this.locationId = locationId;
             return this;
         }
-        public Builder setName(String name){
-            this.name =name;
+
+        public Builder setName(String name) {
+            this.name = name;
             return this;
         }
 
@@ -113,15 +123,10 @@ public class Location implements Serializable {
             this.areaCode = areaCode;
             return this;
         }
-        public Builder copy(Location location){
-            this.locationId = locationId;
-            this.name = name;
-            this.streetNumber = streetNumber;
-            this.streetName = streetName;
-            this.townOrCity = townOrCity;
-            this.areaCode = areaCode;
-            return this;
+
+        public Location build() {
+            return new Location(this);
         }
-        public Location build(){return new Location(this);}
     }
+
 }
