@@ -18,6 +18,9 @@ public class Project {
     @ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
     @JoinColumn(name="site_manager_id")
     private SiteManager siteManager;
+    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
+    @JoinColumn(name= "company_Id")
+    private Company company;
 
     @ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
     @JoinColumn(name="delivery_order_id")
@@ -40,7 +43,9 @@ public class Project {
         this.projectManager=projectBuilder.projectManager;
         this.siteManager=projectBuilder.siteManager;
         this.driver=projectBuilder.driver;
+        this.company=projectBuilder.company;
         this.deliveryOrder=projectBuilder.deliveryOrder;
+ master
 
     }
 
@@ -67,6 +72,9 @@ public class Project {
         return driver;
     }
 
+    public Company getCompany() {
+        return company;
+    }
     public DeliveryOrder getDeliveryOrder(){return deliveryOrder;}
 
 
@@ -79,6 +87,8 @@ public class Project {
                 ", driver=" + driver +
                 ", projectManager=" + projectManager +
                 ", siteManager=" + siteManager +
+
+                ", company=" + company +
                 ",DeliveryOrder="+deliveryOrder+
                 '}';
     }
@@ -98,6 +108,7 @@ public class Project {
         private ProjectManager projectManager;
         private SiteManager siteManager;
         private Driver driver;
+        private Company company;
 
         private DeliveryOrder deliveryOrder;
 
@@ -131,6 +142,12 @@ public class Project {
             return this;
         }
 
+        public ProjectBuilder setCompany(Company company) {
+            this.company = company;
+            return this;
+        }
+
+
         public ProjectBuilder setDeliveryOrder(DeliveryOrder deliveryOrder){
             this.deliveryOrder=deliveryOrder;
             return this;
@@ -142,10 +159,11 @@ public class Project {
             this.projectManager=project.projectManager;
             this.siteManager=project.siteManager;
             this.driver=project.driver;
+            this.company = project.company;
             this.deliveryOrder=project.deliveryOrder;
 
 
-            return this;
+           return this;
         }
         public Project build(){
             return new Project(this);

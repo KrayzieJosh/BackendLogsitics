@@ -24,7 +24,12 @@ class ProjectServiceImplTest {
     static SiteManager siteManager = SiteManagerFactory.createSiteManagerWithAttributes("245",
             "Operations Manager","Daniel","Lyle","Jacobs","N/A",
             "j;@gmail.com");
+    static Company company = CompanyFactory.createCompanyWithoutProject(Helper.generateID(),"Wayne Enterprises",
+            " 224 Park Drive Gotham City","bw@wenterprises.com");
 
+
+    static Driver driver = DriverFactory.createNewDriver("Lyle", "Esau", "0623458765", "lyle@gmail.com", "delivery driver");
+  
     private static List<MaterialQuote> materialQuotes = Arrays.asList(MaterialQuoteFactory.createMaterialQuote(
             Helper.generateID(),"Wood",11,"12",12)
 
@@ -34,11 +39,11 @@ class ProjectServiceImplTest {
             "123 Main Street",
             "2023-09-15",
             materialQuotes
-    );
+    );  
+  private static Project project = ProjectFactory.createProject(Helper.generateID(),"Project 1","In progress",manager,siteManager,driver,company,deliveryOrder);
 
-    //Lyles code must be here
-    static Driver driver = DriverFactory.createNewDriver("Lyle", "Esau", "0623458765", "lyle@gmail.com", "delivery driver");
-    private static Project project = ProjectFactory.createProject(Helper.generateID(),"Project 1","In progress",manager,siteManager,driver,deliveryOrder);
+
+  
     @Test
     void a_create() {
         Project created= service.create(project);

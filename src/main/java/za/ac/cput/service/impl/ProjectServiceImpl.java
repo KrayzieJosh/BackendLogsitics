@@ -42,6 +42,7 @@ public class ProjectServiceImpl implements ProjectService , Serializable {
     }
     @Override
     public List<Project> getAll(){
+
         return this.repository.findAll();
     }
 }

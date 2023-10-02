@@ -27,6 +27,8 @@ class ProjectControllerTest {
     static SiteManager siteManager = SiteManagerFactory.createSiteManagerWithAttributes("345",
             "Engineer","Lucius","Morgan","Fox","N/A",
             "lfox@wayenenterprises.co.gt");
+    static Company company = CompanyFactory.createCompanyWithoutProject(Helper.generateID(),"Wayne Enterprises",
+            " 224 Park Drive Gotham City","bw@wenterprises.com");
 
     private static List<MaterialQuote> materialQuotes = Arrays.asList(MaterialQuoteFactory.createMaterialQuote(
             Helper.generateID(),"Wood",11,"12",12)
@@ -38,10 +40,11 @@ class ProjectControllerTest {
             "2023-09-15",
             materialQuotes
     );
-    //Lyles code must be implemented here
+
     static Driver driver = DriverFactory.createNewDriver("Lyle", "Esau", "0623458765", "lyle@gmail.com", "delivery driver");
     static Project project = ProjectFactory.createProject(Helper.generateID(),"Project 1","Almost done"
-            ,projectManager,siteManager,driver,deliveryOrder);
+            ,projectManager,siteManager,driver,company,deliveryOrder);
+
 
     @Autowired
     private TestRestTemplate restTemplate;
