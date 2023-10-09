@@ -22,8 +22,6 @@ public class DeliveryEventsController {
     @PostMapping("/create")
     public DeliveryEvents create(@RequestBody DeliveryEvents deliveryEvents) {
 
-        DeliveryEvents deliveryEventsCreated = DeliveryEventsFactory.createDeliveryEvents(deliveryEvents.getDeliveryEventId(), deliveryEvents.getDeliveryName(),deliveryEvents.getDeliveryDate(),deliveryEvents.getDeliveryEventLocation());
-
         return deliveryEventsService.create(deliveryEvents);
     }
 

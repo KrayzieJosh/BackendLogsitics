@@ -4,16 +4,22 @@ Student Number:221110933
 Name & Surname : Jameelah Gallo
 Date: updated the  10th September 2023
  */
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 public class DeliveryEvents {
     @Id
     private String deliveryEventId;
     private String deliveryName;
-    private String deliveryDate;
-    private String deliveryEventLocation;
+    @Temporal(TemporalType.TIMESTAMP)
+    private LocalDateTime deliveryDate;
+    private int streetNumber;
+    private String streetName;
+    private String townOrCity;
+    private int areaCode;
 
 
     private DeliveryEvents (Builder builder){
@@ -21,7 +27,12 @@ public class DeliveryEvents {
         this.deliveryEventId = builder.deliveryEventId;
         this.deliveryName = builder.deliveryName;
         this.deliveryDate = builder.deliveryDate;
-        this.deliveryEventLocation = builder.deliveryEventLocation;
+        this.streetNumber = builder.streetNumber;
+        this.streetName = builder.streetName;
+        this.townOrCity = builder.townOrCity;
+        this.areaCode = builder.areaCode;
+
+
     }
 
     protected DeliveryEvents() {
@@ -36,25 +47,36 @@ public class DeliveryEvents {
         return deliveryName;
     }
 
-    public String getDeliveryDate() {
+    public LocalDateTime getDeliveryDate() {
         return deliveryDate;
     }
 
-    public String getDeliveryEventLocation() {
-        return deliveryEventLocation;
+    public int getStreetNumber() {
+        return streetNumber;
     }
 
+    public String getStreetName() {
+        return streetName;
+    }
 
+    public String getTownOrCity() {
+        return townOrCity;
+    }
 
+    public int getAreaCode() {
+        return areaCode;
+    }
 
     @Override
     public String toString() {
         return "DeliveryEvents{" +
                 "deliveryEventId='" + deliveryEventId + '\'' +
                 ", deliveryName='" + deliveryName + '\'' +
-                ", deliveryDate='" + deliveryDate + '\'' +
-                ", deliveryEventLocation='" + deliveryEventLocation + '\'' +
-
+                ", deliveryDate=" + deliveryDate +
+                ", streetNumber=" + streetNumber +
+                ", streetName='" + streetName + '\'' +
+                ", townOrCity='" + townOrCity + '\'' +
+                ", areaCode=" + areaCode +
                 '}';
     }
 
@@ -62,9 +84,11 @@ public class DeliveryEvents {
 
         private String deliveryEventId;
         private String deliveryName;
-        private String deliveryDate;
-        private String deliveryEventLocation;
-
+        private LocalDateTime deliveryDate;
+        private int streetNumber;
+        private String streetName;
+        private String townOrCity;
+        private int areaCode;
 
 
         public Builder setDeliveryEventId(String deliveryEventId) {
@@ -78,26 +102,44 @@ public class DeliveryEvents {
 
         }
 
-        public Builder setDeliveryDate(String deliveryDate) {
+        public Builder setDeliveryDate(LocalDateTime deliveryDate) {
             this.deliveryDate = deliveryDate;
             return this;
 
         }
 
-        public Builder setDeliveryEventLocation(String deliveryEventLocation) {
-            this.deliveryEventLocation = deliveryEventLocation;
+        public Builder setStreetNumber(int streetNumber) {
+            this.streetNumber = streetNumber;
             return this;
         }
 
+        public Builder setStreetName(String streetName) {
+            this.streetName = streetName;
+            return this;
 
+        }
 
+        public Builder setTownOrCity(String townOrCity) {
+            this.townOrCity = townOrCity;
+            return this;
+
+        }
+
+        public Builder setAreaCode(int areaCode) {
+            this.areaCode = areaCode;
+            return this;
+
+        }
 
         public Builder copy(DeliveryEvents deliveryEvent){
 
             this.deliveryEventId = deliveryEvent.deliveryEventId;
             this.deliveryName = deliveryEvent.deliveryName;
             this.deliveryDate = deliveryEvent.deliveryDate;
-            this.deliveryEventLocation = deliveryEvent.deliveryEventLocation;
+            this.streetNumber = deliveryEvent.streetNumber;
+            this.streetName = deliveryEvent.streetName;
+            this.townOrCity = deliveryEvent.townOrCity;
+            this.areaCode = deliveryEvent.areaCode;
             return this;
         }
         public DeliveryEvents build(){

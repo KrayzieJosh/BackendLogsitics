@@ -16,20 +16,25 @@ import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import za.ac.cput.domain.DeliveryEvents;
+import za.ac.cput.domain.Location;
 import za.ac.cput.factory.DeliveryEventsFactory;
+import za.ac.cput.factory.LocationFactory;
 import za.ac.cput.util.Helper;
+
+import java.time.LocalDateTime;
+import java.util.Objects;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @TestMethodOrder(MethodOrderer.MethodName.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class DeliveryEventsControllerTest {
 
-
     static DeliveryEvents deliveryEvent =
             DeliveryEventsFactory.createDeliveryEvents(Helper.generateID(),
-                    "John Wattkins"
-                    ,"17-06-2023",
-                    "56 Epping Industria");
+                    "Normal delivery"// standard delivery etc.
+                    , LocalDateTime.now(),2, "Janari Road","Grassy Park",7941
+                    );
 
 
     @Autowired
@@ -58,7 +63,7 @@ class DeliveryEventsControllerTest {
         System.out.println("URL: " + url);
         // get
         ResponseEntity<DeliveryEvents> response = restTemplate.getForEntity(url, DeliveryEvents.class);
-        assertEquals(deliveryEvent.getDeliveryEventId(), response.getBody().getDeliveryEventId());
+        assertEquals(deliveryEvent.getDeliveryEventId(), Objects.requireNonNull(response.getBody()).getDeliveryEventId());
         System.out.println(response.getBody());
     }
 
@@ -66,7 +71,7 @@ class DeliveryEventsControllerTest {
     void c_update() {
         DeliveryEvents updated = new DeliveryEvents.Builder()
                 .copy(deliveryEvent)
-                .setDeliveryEventLocation("PardenIsland")
+                .setDeliveryName("Same day")
                 .build();
         String url = baseURL + "/update";
         System.out.println("URL: " + url);
