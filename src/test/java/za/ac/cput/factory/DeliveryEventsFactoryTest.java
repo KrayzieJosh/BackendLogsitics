@@ -6,7 +6,10 @@ Date: updated  the 10th September 2023
  */
 import org.junit.jupiter.api.Test;
 import za.ac.cput.domain.DeliveryEvents;
+import za.ac.cput.domain.Location;
 import za.ac.cput.util.Helper;
+
+import java.time.LocalDateTime;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -17,11 +20,9 @@ class DeliveryEventsFactoryTest {
 
 
 
-
-
         DeliveryEvents deliveryEvent =  DeliveryEventsFactory.createDeliveryEvents
-                (Helper.generateID(),"John Wattkins","17-06-2023"
-                        ,"56 Epping Industria");
+                (Helper.generateID(),"Normal delivery", LocalDateTime.now()
+                        ,2, "Janari Road","Grassy Park",7941);
 
         assertNotNull(deliveryEvent);
 

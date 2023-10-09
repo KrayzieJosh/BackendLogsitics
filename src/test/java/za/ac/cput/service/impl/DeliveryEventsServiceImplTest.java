@@ -11,8 +11,12 @@ import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import za.ac.cput.domain.DeliveryEvents;
+import za.ac.cput.domain.Location;
 import za.ac.cput.factory.DeliveryEventsFactory;
+import za.ac.cput.factory.LocationFactory;
 import za.ac.cput.util.Helper;
+
+import java.time.LocalDateTime;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.jupiter.api.Assertions.*;
@@ -24,8 +28,10 @@ class DeliveryEventsServiceImplTest {
     @Autowired
     private DeliveryEventsServiceImpl service;
 
-    private static DeliveryEvents deliveryEvents= DeliveryEventsFactory.createDeliveryEvents(Helper.generateID(), "John Wattkins", "17-06-2023"
-            , "56 Epping Industria");
+
+
+    private static DeliveryEvents deliveryEvents= DeliveryEventsFactory.createDeliveryEvents(Helper.generateID(), "Normal delivery", LocalDateTime.now()
+            , 2, "Janari Road","Grassy Park",7941);
     @Test
     void a_create() {
         DeliveryEvents created=service.create(deliveryEvents);
@@ -43,9 +49,9 @@ class DeliveryEventsServiceImplTest {
 
     @Test
     void c_update() {
-        DeliveryEvents newDeliveryEvent=new DeliveryEvents.Builder().copy(deliveryEvents).setDeliveryEventLocation("Montague Gardens").build();
+        DeliveryEvents newDeliveryEvent=new DeliveryEvents.Builder().copy(deliveryEvents).setDeliveryName("Same day").build();
         DeliveryEvents updated=service.update(newDeliveryEvent);
-        assertEquals(newDeliveryEvent.getDeliveryEventLocation(),updated.getDeliveryEventLocation());
+        assertEquals(newDeliveryEvent.getDeliveryName(),updated.getDeliveryName());
         System.out.println("Updated : "+updated);
 
     }
