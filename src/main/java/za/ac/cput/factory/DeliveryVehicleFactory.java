@@ -2,7 +2,7 @@ package za.ac.cput.factory;
 import za.ac.cput.util.Helper;
 import za.ac.cput.domain.DeliveryVehicle;
 
-public class DeliveryVehicleFactory {
+public class  DeliveryVehicleFactory {
     public static DeliveryVehicle createDeliveryVehicle(String vehicleId, String vehicleName,String vehicleLicenceExpiry, double vehicleLoadCapacity, boolean isAvailable) {
         vehicleId = Helper.generateID();
         vehicleLoadCapacity = Double.parseDouble(String.valueOf(vehicleLoadCapacity));

@@ -1,9 +1,7 @@
 package za.ac.cput.domain;
 import jakarta.persistence.*;
-
 @Entity
 public class Project {
-
     @Id
     private String projectId;
     private String projectName;
@@ -45,7 +43,6 @@ public class Project {
         this.driver=projectBuilder.driver;
         this.company=projectBuilder.company;
         this.deliveryOrder=projectBuilder.deliveryOrder;
- master
 
     }
 
@@ -93,7 +90,7 @@ public class Project {
                 '}';
     }
 
-
+//custom string just to display the project details and excludes project manager & site manager
     public String secondString(){
         return "Project{" +
                 "projectId='" + projectId + '\'' +
