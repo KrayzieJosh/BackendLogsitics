@@ -23,10 +23,9 @@ class CompanyServiceImplTest {
     @Autowired
     private CompanyServiceImpl service;
 
-    static List<Project> projects = Collections.singletonList(ProjectFactory.createProjectDetails(Helper.generateID(),"Project 2,","Done"));
 
     static Company company = CompanyFactory.createCompany(Helper.generateID(),"Wayne Enterprises",
-            " 224 Park Drive Gotham City","bw@wenterprises.com",projects);
+            " 224 Park Drive Gotham City","bw@wenterprises.com");
 
     @Test
     void a_create() {

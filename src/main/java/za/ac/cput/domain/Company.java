@@ -16,8 +16,6 @@ public class Company {
     private String companyPhysicalAddress;
     @Column(name="company_email_address")
     private String companyEmail;
-    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
-    private List<Project> projects;
 
     public Company(){
 
@@ -29,7 +27,6 @@ public class Company {
         this.companyName = builder.companyName;
         this.companyPhysicalAddress = builder.companyPhysicalAddress;
         this.companyEmail = builder.companyEmail;
-        this.projects = builder.projects;
 
     }
 
@@ -49,9 +46,7 @@ public class Company {
         return companyEmail;
     }
 
-    public List<Project> getProjects() {
-        return projects;
-    }
+
 
     @Override
     public String toString() {
@@ -60,7 +55,7 @@ public class Company {
                 ", companyName='" + companyName + '\'' +
                 ", companyPhysicalAddress='" + companyPhysicalAddress + '\'' +
                 ", companyEmail='" + companyEmail + '\'' +
-                ", projects=" + projects +
+
                 '}';
     }
 
@@ -70,7 +65,6 @@ public class Company {
         private String companyName;
         private String companyPhysicalAddress;
         private String companyEmail;
-        private List<Project> projects;
 
         public Builder setCompanyId(String companyId) {
             this.companyId = companyId;
@@ -92,10 +86,7 @@ public class Company {
             return this;
         }
 
-        public Builder setProjects(List<Project> projects) {
-            this.projects = projects;
-            return this;
-        }
+
         //Setters:
 
         //copy:
@@ -104,7 +95,7 @@ public class Company {
             this.companyName = company.companyEmail;
             this.companyPhysicalAddress = company.companyPhysicalAddress;
             this.companyEmail = company.companyEmail;
-            this.projects = company.projects;
+
             return this;
         }
 

@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ProjectControllerTest {
     static ProjectManager projectManager = ProjectManagerFactory.createProjectManagerWithAttributes(
-            "123","Foreman","Bruce","John","Wayne","N/A",
+            "123","Foreman","Bruce","Wayne",
             "bwayne@wayneEnterprises.co.gt");
     static SiteManager siteManager = SiteManagerFactory.createSiteManagerWithAttributes("345",
             "Engineer","Lucius","Morgan","Fox","N/A",
@@ -43,7 +43,7 @@ class ProjectControllerTest {
 
     static Driver driver = DriverFactory.createNewDriver("Lyle", "Esau", "0623458765", "lyle@gmail.com", "delivery driver");
     static Project project = ProjectFactory.createProject(Helper.generateID(),"Project 1","Almost done"
-            ,projectManager,siteManager,driver,company,deliveryOrder);
+            ,projectManager,siteManager,driver,deliveryOrder);
 
 
     @Autowired
@@ -60,7 +60,7 @@ class ProjectControllerTest {
         assertEquals(savedProject.getProjectId(),savedProject.getProjectId());
 
         assertNotNull(savedProject);
-        System.out.println("Saved data: " + savedProject.secondString());
+        System.out.println("Saved data: " + savedProject.toString());
 
     }
 

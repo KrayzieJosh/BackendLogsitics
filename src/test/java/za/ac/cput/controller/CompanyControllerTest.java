@@ -29,10 +29,9 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class CompanyControllerTest {
 
-    static List<Project> projects = Collections.singletonList(ProjectFactory.createProjectDetails(Helper.generateID(), "Project 2,", "Done"));
 
     static Company company = CompanyFactory.createCompany(Helper.generateID(),"Wayne Enterprises",
-         " 224 Park Drive Gotham City","bw@wenterprises.com",projects);
+         " 224 Park Drive Gotham City","bw@wenterprises.com");
 
  @Autowired
  private TestRestTemplate restTemplate;
@@ -42,7 +41,7 @@ class CompanyControllerTest {
      String url = baseURL + "/create";
      ResponseEntity<Company> postResponse = restTemplate.postForEntity(url, company, Company.class);
      assertNotNull(postResponse);
-     assertNotNull(postResponse.getBody());
+
      Company createdCompany = postResponse.getBody();
 
      assertNotNull(createdCompany);
