@@ -20,15 +20,13 @@ class ProjectFactoryTest {
     @Test
     void createProject() {
         ProjectManager projectManager = ProjectManagerFactory.createProjectManagerWithAttributes(
-                "123","Foreman","Bruce","John","Wayne","N/A",
-                "bwayne@wayneEnterprises.co.gt");
+                "123","Foreman","Bruce","John","bwayne@wayneEnterprises.co.gt");
         SiteManager siteManager = SiteManagerFactory.createSiteManagerWithAttributes("345",
                 "Engineer","Lucius","Morgan","Fox","N/A",
                 "lfox@wayenenterprises.co.gt");
 
         Driver driver = DriverFactory.createNewDriver("Lyle", "Esau", "0623458765", "lyle@gmail.com", "delivery driver");
-         Company company = CompanyFactory.createCompanyWithoutProject(Helper.generateID(),"Wayne Enterprises",
-                " 224 Park Drive Gotham City","bw@wenterprises.com");
+
 
         List<MaterialQuote> materialQuotes = Arrays.asList(MaterialQuoteFactory.createMaterialQuote(
                         Helper.generateID(),"Wood",11,"12",12));
@@ -39,7 +37,7 @@ class ProjectFactoryTest {
                 materialQuotes
         );
 
-        Project project = ProjectFactory.createProject(Helper.generateID(),"Project1","In progress", projectManager, siteManager,driver,company,deliveryOrder);
+        Project project = ProjectFactory.createProject(Helper.generateID(),"Project1","In progress", projectManager, siteManager,driver,deliveryOrder);
 
         
         assertNotNull(project);

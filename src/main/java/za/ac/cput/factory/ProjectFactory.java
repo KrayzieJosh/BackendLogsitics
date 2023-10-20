@@ -4,10 +4,10 @@ import za.ac.cput.util.Helper;
 
 public class ProjectFactory {
 
-    public static Project createProject(String projectId, String projectName, String projectStatus, ProjectManager projectManager, SiteManager siteManager, Driver driver, Company company, DeliveryOrder deliveryOrder){
+    public static Project createProject(String projectId, String projectName, String projectStatus, ProjectManager projectManager, SiteManager siteManager, Driver driver, DeliveryOrder deliveryOrder){
         projectId = Helper.generateID();
         if(Helper.isNullOrEmpty(projectId)||Helper.isNullOrEmpty(projectName)||Helper.isNullOrEmpty(projectStatus)||Helper.isNullOrEmpty(String.valueOf(projectManager))||Helper.isNullOrEmpty(String.valueOf(siteManager))
-                ||Helper.isNullOrEmpty(String.valueOf(driver))|| Helper.isNullOrEmpty(String.valueOf(company))||Helper.isNullOrEmpty(String.valueOf(deliveryOrder))){
+                ||Helper.isNullOrEmpty(String.valueOf(driver))||Helper.isNullOrEmpty(String.valueOf(deliveryOrder))){
 
     
 
@@ -20,7 +20,7 @@ public class ProjectFactory {
                 .setProjectManager( projectManager)
                 .setSiteManager(siteManager)
                 .setDriver(driver)
-                .setCompany(company)
+
 
                .setDeliveryOrder(deliveryOrder)
 

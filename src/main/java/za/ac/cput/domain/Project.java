@@ -7,32 +7,38 @@ public class Project {
     private String projectName;
     private String projectStatus;
     @ManyToOne(fetch=FetchType.EAGER,cascade=CascadeType.ALL)
-    @JoinColumn(name = "driver")
+    @JoinColumn(name = "driver",referencedColumnName = "driverId")
     private Driver driver;
     @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinColumn(name = "project_manager_id")
+    @JoinColumn(name = "project_manager_id",referencedColumnName = "projectManagerId")
     private ProjectManager projectManager;
 
     @ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
-    @JoinColumn(name="site_manager_id")
+    @JoinColumn(name="site_manager_id",referencedColumnName = "siteManagerId")
     private SiteManager siteManager;
-    @ManyToOne(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinColumn(name= "company_Id")
-    private Company company;
+
 
     @ManyToOne(fetch = FetchType.EAGER,cascade=CascadeType.ALL)
-    @JoinColumn(name="delivery_order_id")
+    @JoinColumn(name="delivery_order_id",referencedColumnName = "deliveryOrderId")
     private DeliveryOrder deliveryOrder;
 
 
     public Project() {
     }
 
-    public Project(String projectId, String projectName, String projectStatus) {
+    public Project(String projectId, String projectName, String projectStatus, Driver driver, ProjectManager projectManager,
+                   SiteManager siteManager,  DeliveryOrder deliveryOrder) {
         this.projectId = projectId;
         this.projectName = projectName;
         this.projectStatus = projectStatus;
+        this.driver = driver;
+        this.projectManager = projectManager;
+        this.siteManager = siteManager;
+
+        this.deliveryOrder = deliveryOrder;
     }
+
+
 
     private Project(ProjectBuilder projectBuilder){
         this.projectId = projectBuilder.projectId;
@@ -41,7 +47,7 @@ public class Project {
         this.projectManager=projectBuilder.projectManager;
         this.siteManager=projectBuilder.siteManager;
         this.driver=projectBuilder.driver;
-        this.company=projectBuilder.company;
+
         this.deliveryOrder=projectBuilder.deliveryOrder;
 
     }
@@ -59,19 +65,17 @@ public class Project {
     }
 
     public ProjectManager getProjectManager() {
+
         return projectManager;
     }
 
     public SiteManager getSiteManager() {return siteManager;}
 
-    //lyle needs to pus his driver code for this errors to disappear
+
     public Driver getDriver() {
         return driver;
     }
 
-    public Company getCompany() {
-        return company;
-    }
     public DeliveryOrder getDeliveryOrder(){return deliveryOrder;}
 
 
@@ -85,7 +89,7 @@ public class Project {
                 ", projectManager=" + projectManager +
                 ", siteManager=" + siteManager +
 
-                ", company=" + company +
+
                 ",DeliveryOrder="+deliveryOrder+
                 '}';
     }
@@ -105,8 +109,6 @@ public class Project {
         private ProjectManager projectManager;
         private SiteManager siteManager;
         private Driver driver;
-        private Company company;
-
         private DeliveryOrder deliveryOrder;
 
         public ProjectBuilder setProjectId(String projectId) {
@@ -139,10 +141,6 @@ public class Project {
             return this;
         }
 
-        public ProjectBuilder setCompany(Company company) {
-            this.company = company;
-            return this;
-        }
 
 
         public ProjectBuilder setDeliveryOrder(DeliveryOrder deliveryOrder){
@@ -156,7 +154,7 @@ public class Project {
             this.projectManager=project.projectManager;
             this.siteManager=project.siteManager;
             this.driver=project.driver;
-            this.company = project.company;
+
             this.deliveryOrder=project.deliveryOrder;
 
 

@@ -8,11 +8,11 @@ import java.util.List;
 
 public class CompanyFactory {
 public static Company createCompany(String companyId, String companyName, String companyPhysicalAddress,
-                                    String companyEmail, List<Project> projects)
+                                    String companyEmail)
 {
     companyId = Helper.generateID();
-if(Helper.isNullOrEmpty(companyName)|| Helper.isNullOrEmpty(companyPhysicalAddress)||Helper.isNullOrEmpty(companyEmail)||
-Helper.isNullOrEmpty(String.valueOf(projects))){
+if(Helper.isNullOrEmpty(companyName)|| Helper.isNullOrEmpty(companyPhysicalAddress)||Helper.isNullOrEmpty(companyEmail)
+){
 
 return null;
 }
@@ -21,7 +21,7 @@ return new Company.Builder()
         .setCompanyName(companyName)
         .setCompanyPhysicalAddress(companyPhysicalAddress)
         .setCompanyEmail(companyEmail)
-        .setProjects(projects)
+
         .build();
 
 
