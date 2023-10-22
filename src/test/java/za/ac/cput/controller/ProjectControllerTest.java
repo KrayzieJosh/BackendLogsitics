@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ProjectControllerTest {
     static ProjectManager projectManager = ProjectManagerFactory.createProjectManagerWithAttributes(
-            "123","Foreman","Bruce","Wayne",
+            "123","Foreman","Bruce","John","Wayne","N/A",
             "bwayne@wayneEnterprises.co.gt");
     static SiteManager siteManager = SiteManagerFactory.createSiteManagerWithAttributes("345",
             "Engineer","Lucius","Morgan","Fox","N/A",

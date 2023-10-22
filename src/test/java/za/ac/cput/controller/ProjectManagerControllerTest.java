@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 class ProjectManagerControllerTest {
     static ProjectManager manager = ProjectManagerFactory.createProjectManagerWithAttributes(
-            "123","Foreman","Bruce","Wayne",
+            "123","Foreman","Bruce","John","Wayne","N/A",
             "bwayne@wayneEnterprises.co.gt");
     @Autowired
     private TestRestTemplate restTemplate;
