@@ -20,7 +20,8 @@ class ProjectFactoryTest {
     @Test
     void createProject() {
         ProjectManager projectManager = ProjectManagerFactory.createProjectManagerWithAttributes(
-                "123","Foreman","Bruce","John","bwayne@wayneEnterprises.co.gt");
+                "123","Foreman","Bruce","John","Wayne","N/A",
+                "bwayne@wayneEnterprises.co.gt");
         SiteManager siteManager = SiteManagerFactory.createSiteManagerWithAttributes("345",
                 "Engineer","Lucius","Morgan","Fox","N/A",
                 "lfox@wayenenterprises.co.gt");

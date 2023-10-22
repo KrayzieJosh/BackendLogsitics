@@ -8,6 +8,7 @@ import java.util.List;
 @Table(name = "project_manager")
 public class ProjectManager {
     @Id
+    @Column(name = "projectManagerId")
     private String projectManagerId;
 
     @Column(name = "position")
@@ -16,8 +17,14 @@ public class ProjectManager {
     @Column(name = "first_name")
     private String firstName;
 
+    @Column(name = "middle_name")
+    private String middleName;
+
     @Column(name = "last_name")
     private String lastName;
+
+    @Column(name = "contact")
+    private String contact;
 
     @Column(name = "email")
     private String email;
@@ -29,7 +36,9 @@ public class ProjectManager {
         this.projectManagerId = builder.projectManagerId;
         this.position = builder.position;
         this.firstName = builder.firstName;
+        this.middleName = builder.middleName;
         this.lastName = builder.lastName;
+        this.contact = builder.contact;
         this.email = builder.email;
         this.project = builder.project;
     }
@@ -46,11 +55,17 @@ public class ProjectManager {
         return firstName;
     }
 
+    public String getMiddleName() {
+        return middleName;
+    }
 
     public String getLastName() {
         return lastName;
     }
 
+    public String getContact() {
+        return contact;
+    }
 
     public String getEmail() {
         return email;
@@ -66,7 +81,9 @@ public class ProjectManager {
                 "projectManagerId='" + projectManagerId + '\'' +
                 ", position='" + position + '\'' +
                 ", firstName='" + firstName + '\'' +
+                ", middleName='" + middleName + '\'' +
                 ", lastName='" + lastName + '\'' +
+                ", contact='" + contact + '\'' +
                 ", email='" + email + '\'' +
                 ", project=" + project +
                 '}';
@@ -77,18 +94,18 @@ public class ProjectManager {
                 "projectManagerId='" + projectManagerId + '\'' +
                 ", position='" + position + '\'' +
                 ", firstName='" + firstName + '\'' +
+                ", middleName='" + middleName + '\'' +
                 ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' +
                 '}';
     }
 
-
-
-    public ProjectManager(String projectManagerId, String position, String firstName, String lastName, String email, List<Project> project) {
+    public ProjectManager(String projectManagerId, String position, String firstName, String middleName, String lastName, String contact, String email, List<Project> project) {
         this.projectManagerId = projectManagerId;
         this.position = position;
         this.firstName = firstName;
+        this.middleName = middleName;
         this.lastName = lastName;
+        this.contact = contact;
         this.email = email;
         this.project = project;
     }
@@ -105,7 +122,9 @@ public class ProjectManager {
         private String projectManagerId;
         private String position;
         private String firstName;
+        private String middleName;
         private String lastName;
+        private String contact;
         private String email;
         private List<Project> project;
 
@@ -124,13 +143,20 @@ public class ProjectManager {
             return this;
         }
 
+        public ProjectManagerBuilder setMiddleName(String middleName) {
+            this.middleName = middleName;
+            return this;
+        }
 
         public ProjectManagerBuilder setLastName(String lastName) {
             this.lastName = lastName;
             return this;
         }
 
-
+        public ProjectManagerBuilder setContact(String contact) {
+            this.contact = contact;
+            return this;
+        }
 
         public ProjectManagerBuilder setEmail(String email) {
             this.email = email;
@@ -146,7 +172,9 @@ public class ProjectManager {
             this.projectManagerId = projectManager.projectManagerId;
             this.position = projectManager.position;
             this.firstName = projectManager.firstName;
+            this.middleName = projectManager.middleName;
             this.lastName = projectManager.lastName;
+            this.contact = projectManager.contact;
             this.email = projectManager.email;
             this.project = projectManager.project;
 

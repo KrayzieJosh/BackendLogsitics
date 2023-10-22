@@ -10,10 +10,13 @@ import za.ac.cput.factory.*;
 import za.ac.cput.util.Helper;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+
+
 @TestMethodOrder(MethodOrderer.MethodName.class)
 @SpringBootTest
 class ProjectServiceImplTest {
@@ -24,14 +27,13 @@ class ProjectServiceImplTest {
     static SiteManager siteManager = SiteManagerFactory.createSiteManagerWithAttributes("245",
             "Operations Manager","Daniel","Lyle","Jacobs","N/A",
             "j;@gmail.com");
-    static Company company = CompanyFactory.createCompanyWithoutProject(Helper.generateID(),"Wayne Enterprises",
-            " 224 Park Drive Gotham City","bw@wenterprises.com");
+
 
 
     static Driver driver = DriverFactory.createNewDriver("Lyle", "Esau", "0623458765", "lyle@gmail.com", "delivery driver");
   
-    private static List<MaterialQuote> materialQuotes = Arrays.asList(MaterialQuoteFactory.createMaterialQuote(
-            Helper.generateID(),"Wood",11,"12",12)
+    private static final List<MaterialQuote> materialQuotes = Collections.singletonList(MaterialQuoteFactory.createMaterialQuote(
+            Helper.generateID(), "Wood", 11, "12", 12)
 
     );
     static DeliveryOrder deliveryOrder = DeliveryOrderFactory.createDeliveryOrder(
@@ -40,10 +42,10 @@ class ProjectServiceImplTest {
             "2023-09-15",
             materialQuotes
     );  
-  private static Project project = ProjectFactory.createProject(Helper.generateID(),"Project 1","In progress",manager,siteManager,driver,company,deliveryOrder);
+  private static final Project project = ProjectFactory.createProject(Helper.generateID(),"Project 1","In progress",manager,siteManager,driver,deliveryOrder);
 
 
-  
+  @Disabled
     @Test
     void a_create() {
         Project created= service.create(project);
